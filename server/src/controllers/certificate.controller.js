@@ -5,6 +5,7 @@ import {
 } from "../services/blockchain.service.js";
 import { embedQR } from "../services/pdf.service.js";
 import {
+  findAllCertificates,
   findCertificate,
   insertCertificate,
   uploadFile,
@@ -114,6 +115,24 @@ export const verifyCertificate = async (req, res) => {
         timeStamp: certificate.created_at,
       },
     });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const getAllCertificates = async (req, res) => {
+  const certificates = await findAllCertificates();
+
+  return res.status(200).json({
+    success: true,
+    message: "Daftar Sertifikat berhasil diambil",
+    total: certificates.length,
+    data: certificates,
+  });
+  try {
   } catch (error) {
     return res.status(500).json({
       success: false,

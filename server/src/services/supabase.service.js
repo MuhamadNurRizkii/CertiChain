@@ -59,3 +59,16 @@ export const findCertificate = async (id) => {
 
   return data;
 };
+
+export const findAllCertificates = async () => {
+  const { data, error } = await supabase
+    .from("certificates")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+};
