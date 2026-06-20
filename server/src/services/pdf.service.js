@@ -12,8 +12,8 @@ export const embedQR = async (pdf, url) => {
   const page = pdfDoc.getPages()[0];
 
   page.drawImage(qrImage, {
-    x: 480,
-    y: 60,
+    x: 600,
+    y: 100,
     width: 100,
     height: 100,
   });
