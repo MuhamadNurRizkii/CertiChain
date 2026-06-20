@@ -44,7 +44,7 @@ export const uploadCertificate = async (req, res) => {
 
     // gabungkan qr ke dalam file pdf
     const pdfBuffer = await embedQR(file.buffer, url);
-    const filename = file.originalname;
+    const filename = `${uuid}-${file.originalname}`;
 
     // upload ke storage supabase
     const publicUrl = await uploadFile(pdfBuffer, filename);
