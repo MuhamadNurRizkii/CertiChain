@@ -4,6 +4,7 @@ import { findCertificate } from "../api/certificate";
 import { showError } from "../utils/alert";
 import { formatDateTime } from "../utils/formatDate";
 import InvalidCard from "../components/InvalidCard";
+import logo from "../assets/logo.png";
 
 const VerifyPage = () => {
   const [certificate, setCertificate] = useState(null);
@@ -39,43 +40,41 @@ const VerifyPage = () => {
   return (
     <div className="bg-background text-on-background font-body-md min-h-screen flex flex-col">
       {/* TopNavBar */}
-      <header className="bg-surface-container-lowest border-b border-outline-variant fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto">
-        <div className="flex items-center gap-md">
-          {/* Brand Logo */}
-          <Link
-            className="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2"
-            to="/"
-          >
-            <img
-              alt="CertiChain Logo"
-              className="h-8 w-auto"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcSNDrH4i1zxEQ0HuOuctK-lSsosbSmeRxX0_Lv6Tak1ZCDEDCJVoY_S0MgqCEqy0gLFG7JFfdCrf2wg1o4OaFFqjjnf6b8t0UzihpJxw515zI8Gi_Nqmjnbb2dD4_V-hGR_9jwJKWQuGqA83ZlpD8daiQjZZFDinFi-NcB11DRbNvdy0fBXBXfth8l_CE94Ci5PS2xURJL1fO3bw9BjD_MJsfJYqzbY45S7Qa3FoT6FLweA8uOTh3tt_OKWofguJr4QYI6w9mAg"
-            />
-            CertiChain
-          </Link>
-        </div>
-        <div className="flex items-center gap-lg">
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-md">
+      <header className="bg-surface-container-lowest border-b border-outline-variant fixed top-0 w-full z-50">
+        <div className="flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto w-full">
+          <div className="flex items-center gap-md">
+            {/* Brand Logo */}
             <Link
-              to={"/"}
-              className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200"
+              className="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2"
+              to="/"
             >
-              Home
+              <img alt="CertiChain Logo" className="h-8 w-auto" src={logo} />
+              CertiChain
             </Link>
-            <Link
-              to={"/upload"}
-              className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200"
-            >
-              Upload
-            </Link>
-            <Link
-              to={"/certificates"}
-              className="text-primary font-bold border-b-2 border-primary pb-1"
-            >
-              Certificates
-            </Link>
-          </nav>
+          </div>
+          <div className="flex items-center gap-lg">
+            {/* Navigation Links */}
+            <nav className="hidden md:flex items-center gap-md">
+              <Link
+                to={"/"}
+                className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200"
+              >
+                Home
+              </Link>
+              <Link
+                to={"/upload"}
+                className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200"
+              >
+                Upload
+              </Link>
+              <Link
+                to={"/certificates"}
+                className="text-primary font-bold border-b-2 border-primary pb-1"
+              >
+                Certificates
+              </Link>
+            </nav>
+          </div>
         </div>
       </header>
 
@@ -231,11 +230,7 @@ const VerifyPage = () => {
       {/* Footer */}
       <footer className="bg-surface-container w-full py-lg px-gutter flex flex-col md:flex-row justify-between items-center gap-md border-t border-outline-variant mt-auto flat no shadows">
         <div className="flex items-center gap-2 font-headline-md text-headline-md font-bold text-on-surface">
-          <img
-            alt="CertiChain Logo"
-            className="h-8 w-auto"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcSNDrH4i1zxEQ0HuOuctK-lSsosbSmeRxX0_Lv6Tak1ZCDEDCJVoY_S0MgqCEqy0gLFG7JFfdCrf2wg1o4OaFFqjjnf6b8t0UzihpJxw515zI8Gi_Nqmjnbb2dD4_V-hGR_9jwJKWQuGqA83ZlpD8daiQjZZFDinFi-NcB11DRbNvdy0fBXBXfth8l_CE94Ci5PS2xURJL1fO3bw9BjD_MJsfJYqzbY45S7Qa3FoT6FLweA8uOTh3tt_OKWofguJr4QYI6w9mAg"
-          />
+          <img alt="CertiChain Logo" className="h-8 w-auto" src={logo} />
           <span>CertiChain</span>
         </div>
         <div className="flex gap-md font-label-sm text-label-sm">

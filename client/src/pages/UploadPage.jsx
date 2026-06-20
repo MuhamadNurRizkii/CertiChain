@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link } from "react-router";
 import { uploadFile } from "../api/certificate";
 import { showError, showSuccess } from "../utils/alert";
+import logo from "../assets/logo.png";
 
 const UploadPage = () => {
   const [file, setFile] = useState(null);
@@ -9,6 +10,7 @@ const UploadPage = () => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [uploadState, setUploadState] = useState("idle"); // 'idle', 'loading', 'success'
   const [showToast, setShowToast] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const fileInputRef = useRef(null);
 
   const handleDragOver = (e) => {
@@ -93,43 +95,80 @@ const UploadPage = () => {
             `}</style>
 
       {/* TopNavBar */}
-      <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto bg-surface-container-lowest border-b border-outline-variant">
-        {/* Brand Logo */}
-        <div className="flex items-center gap-2">
-          <img
-            alt="CertChain Logo"
-            className="h-8 w-auto"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcSNDrH4i1zxEQ0HuOuctK-lSsosbSmeRxX0_Lv6Tak1ZCDEDCJVoY_S0MgqCEqy0gLFG7JFfdCrf2wg1o4OaFFqjjnf6b8t0UzihpJxw515zI8Gi_Nqmjnbb2dD4_V-hGR_9jwJKWQuGqA83ZlpD8daiQjZZFDinFi-NcB11DRbNvdy0fBXBXfth8l_CE94Ci5PS2xURJL1fO3bw9BjD_MJsfJYqzbY45S7Qa3FoT6FLweA8uOTh3tt_OKWofguJr4QYI6w9mAg"
-          />
-          <span className="text-headline-md font-headline-md font-bold text-primary">
-            CertiChain
-          </span>
+      <nav className="fixed top-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant">
+        <div className="flex justify-between items-center px-gutter h-16 max-w-container-max mx-auto w-full">
+          {/* Brand Logo */}
+          <div className="flex items-center gap-2">
+            <img alt="CertChain Logo" className="h-8 w-auto" src={logo} />
+            <span className="text-headline-md font-headline-md font-bold text-primary">
+              CertiChain
+            </span>
+          </div>
+          {/* Navigation Links (Desktop) */}
+          <div className="flex items-center gap-lg">
+            {/* Navigation Links */}
+            <nav className="hidden md:flex items-center gap-md">
+              <Link
+                to={"/"}
+                className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200"
+              >
+                Home
+              </Link>
+              <Link
+                to={"/upload"}
+                className="text-primary font-bold border-b-2 border-primary pb-1"
+              >
+                Upload
+              </Link>
+              <Link
+                to={"/certificates"}
+                className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200"
+              >
+                Certificates
+              </Link>
+            </nav>
+            {/* Hamburger Button */}
+            <button
+              className="md:hidden p-2 text-on-surface hover:bg-surface-container rounded-lg"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <span className="material-symbols-outlined">
+                {isMobileMenuOpen ? "close" : "menu"}
+              </span>
+            </button>
+          </div>
         </div>
-        {/* Navigation Links (Desktop) */}
-        <div className="flex items-center gap-lg">
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-md">
+      </nav>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed top-16 left-0 w-full bg-surface border-b border-outline-variant shadow-lg z-40">
+          <nav className="flex flex-col p-4 gap-4">
             <Link
               to={"/"}
-              className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200"
+              className="text-on-surface-variant font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               to={"/upload"}
-              className="text-primary font-bold border-b-2 border-primary pb-1"
+              className="text-primary font-bold"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Upload
             </Link>
             <Link
               to={"/certificates"}
-              className="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200"
+              className="text-on-surface-variant font-medium"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Certificates
             </Link>
           </nav>
         </div>
-      </nav>
+      )}
+
       {/* Main Content Canvas */}
       <main className="flex-1 flex items-center justify-center pt-24 pb-lg px-gutter max-w-container-max mx-auto w-full">
         {/* Upload Card */}
