@@ -1,3 +1,3 @@
 export const generateVerifycationUrl = (id) => {
-  return `http://localhost:3000/certificate/verify/${id}`;
+  return `https://certichain-green.vercel.app/verify/${id}`;
 };
