@@ -184,12 +184,14 @@ const CertificatesPage = () => {
                       </span>
                     </div>
                     <div>
-                      <h3
-                        className="text-base font-medium text-on-surface truncate w-40"
+                      <a
+                        href={item.file_url}
+                        target="_blank"
+                        className="text-base font-medium text-on-surface truncate w-40 cursor-pointer hover:underline"
                         title={`${item.certificate_name}`}
                       >
-                        {item.certificate_name}
-                      </h3>
+                        {item.certificate_name.split("-")[5]}
+                      </a>
                       <p className="font-label-sm text-label-sm text-on-surface-variant">
                         {item.created_at.split("T")[0]}
                       </p>
