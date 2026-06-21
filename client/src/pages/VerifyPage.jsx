@@ -11,7 +11,6 @@ const VerifyPage = () => {
   const [loading, setLoading] = useState(false);
   const [verify, setVerify] = useState(true);
   const { id } = useParams();
-  console.log("Id:", id);
 
   const fetchCertificate = async () => {
     try {
@@ -35,8 +34,6 @@ const VerifyPage = () => {
   useEffect(() => {
     fetchCertificate();
   }, []);
-
-  console.log(certificate);
   return (
     <div className="bg-background text-on-background font-body-md min-h-screen flex flex-col">
       {/* TopNavBar */}

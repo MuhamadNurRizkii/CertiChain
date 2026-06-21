@@ -34,7 +34,6 @@ const CertificatesPage = () => {
   useEffect(() => {
     fetchCertificates();
   }, []);
-  console.log(certificates);
   return (
     <div className="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col pt-16">
       {/* TopNavBar */}
